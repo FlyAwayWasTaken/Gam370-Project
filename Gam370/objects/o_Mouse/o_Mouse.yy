@@ -1,13 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"o_Player",
+  "%Name":"o_Mouse",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_Player",
+  "name":"o_Mouse",
   "overriddenProperties":[],
   "parent":{
     "name":"Player Controlled",
@@ -32,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_PlaceholderPlayer",
-    "path":"sprites/s_PlaceholderPlayer/s_PlaceholderPlayer.yy",
+    "name":"s_MouseHitbox",
+    "path":"sprites/s_MouseHitbox/s_MouseHitbox.yy",
   },
   "spriteMaskId":null,
   "visible":true,
