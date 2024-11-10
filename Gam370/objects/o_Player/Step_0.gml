@@ -8,26 +8,18 @@ if !mouse_check_button(mb_left)
 {
 	if PullingBack = true
 	{
-		if ThrowOrJump = false
+		//Launch player	
+		//Vertical Momentum
+		VMomentum += (o_Mouse.y - y) / 10
+		if VMomentum > 10
 		{
-			//Launch player	
-			//Vertical Momentum
-			VMomentum += (o_Mouse.y - y) / 10
-			if VMomentum > 10
-			{
-				VMomentum = 10
-			}
-			//Horizontal Momentum
-			HMomentum += (x - o_Mouse.x) / 10
-			if HMomentum > 10
-			{
-				HMomentum = 10
-			}
+			VMomentum = 10
 		}
-		else
+		//Horizontal Momentum
+		HMomentum += (x - o_Mouse.x) / 10
+		if HMomentum > 10
 		{
-			//throw platform
-			
+			HMomentum = 10
 		}
 	}
 	PullingBack = false	

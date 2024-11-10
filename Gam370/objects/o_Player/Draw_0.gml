@@ -1,8 +1,6 @@
 //if we are pulling back, draw a line showing where we are going to go
 if PullingBack = true
 {
-	if ThrowOrJump = false
-	{
 		//get distance and angle for calculations
 		var MouseDistance = distance_to_object(o_Mouse)
 		var MouseDirection = point_direction(x,y,o_Mouse.x,o_Mouse.y)
@@ -83,83 +81,73 @@ if PullingBack = true
 					{
 						if instance_position(ProjectedPosX,ProjectedPosY + (PlayerHeight / 2) ,o_Wall)
 						{
-							//we've hit a wall! kill momentum and end this loop
-							l = ProjectedMomentumVABS
-							ProjectedMomentumV = 0
-						}
-						else
-						{
-							//commit movement
-							ProjectedPosY += 1
-						}
-					}					
-				}
-			
-				//Horizontal Momentum
-			
-				//Going Left 
-				if ProjectedSignH < 0
-				{
-					for (var l = 0; l < ProjectedMomentumHABS; l++) 
-					{
-						if instance_position(ProjectedPosX - (PlayerWidth / 2) - 1,ProjectedPosY,o_Wall)
-						{
-							//we've hit a wall! bounce back the other way!
-							ProjectedMomentumH = ProjectedMomentumH * 0.3
-							ProjectedMomentumH = ProjectedMomentumH * -1
-							l = ProjectedMomentumHABS
-							i = 30
-						}
-						else
-						{
-							//commit movement
-							ProjectedPosX -= 1
-						}		
+						//we've hit a wall! kill momentum and end this loop
+						l = ProjectedMomentumVABS
+						ProjectedMomentumV = 0
 					}
-				}
-
-				//Going Right
-				if ProjectedSignH > 0
-				{
-					for (var l = 0; l < ProjectedMomentumHABS; l++) 
+					else
 					{
-						if instance_position(ProjectedPosX + (PlayerWidth / 2),ProjectedPosY ,o_Wall)
-						{
-							//we've hit a wall! bounce back the other way!
-							ProjectedMomentumH = ProjectedMomentumH * 0.3
-							ProjectedMomentumH = ProjectedMomentumH * -1
-							l = ProjectedMomentumHABS
-							i = 30
-						}
-						else
-						{
-							//commit movement
-							ProjectedPosX += 1
-						}
+						//commit movement
+						ProjectedPosY += 1
 					}
-				}	
-			
+				}					
 			}
-				//if we have no vmomentum and are touching the ground then kill the simulation
-				if ProjectedMomentumV = 0 and instance_position(ProjectedPosX,ProjectedPosY + (PlayerHeight / 2),o_Wall)
+			
+			//Horizontal Momentum
+			
+			//Going Left 
+			if ProjectedSignH < 0
+			{
+				for (var l = 0; l < ProjectedMomentumHABS; l++) 
 				{
-					i = 30	
+					if instance_position(ProjectedPosX - (PlayerWidth / 2) - 1,ProjectedPosY,o_Wall)
+					{
+						//we've hit a wall! bounce back the other way!
+						ProjectedMomentumH = ProjectedMomentumH * 0.3
+						ProjectedMomentumH = ProjectedMomentumH * -1
+						l = ProjectedMomentumHABS
+						i = 30
+					}
+					else
+					{
+						//commit movement
+						ProjectedPosX -= 1
+					}		
 				}
-				else
-				{			
-					//now draw a dot at the location
-					draw_circle(ProjectedPosX,ProjectedPosY,1,false)
+			}
+
+			//Going Right
+			if ProjectedSignH > 0
+			{
+				for (var l = 0; l < ProjectedMomentumHABS; l++) 
+				{
+					if instance_position(ProjectedPosX + (PlayerWidth / 2),ProjectedPosY ,o_Wall)
+					{
+						//we've hit a wall! bounce back the other way!
+						ProjectedMomentumH = ProjectedMomentumH * 0.3
+						ProjectedMomentumH = ProjectedMomentumH * -1
+						l = ProjectedMomentumHABS
+						i = 30
+					}
+					else
+					{
+						//commit movement
+						ProjectedPosX += 1
+					}
 				}
+			}	
+			
 		}
-	}
-	else
-	{
-		//get distance and angle for calculations
-		var MouseDistance = distance_to_object(o_Mouse)
-		var MouseDirection = point_direction(x,y,o_Mouse.x,o_Mouse.y)
-		
-		//draw arrow for throwing
-		draw_arrow(x,y,x + lengthdir_x(MouseDistance * 1.5, MouseDirection + 180),y + lengthdir_y(MouseDistance * 1.5, MouseDirection + 180),5)	
+			//if we have no vmomentum and are touching the ground then kill the simulation
+			if ProjectedMomentumV = 0 and instance_position(ProjectedPosX,ProjectedPosY + (PlayerHeight / 2),o_Wall)
+			{
+				i = 30	
+			}
+			else
+			{			
+				//now draw a dot at the location
+				draw_circle(ProjectedPosX,ProjectedPosY,1,false)
+			}
 	}
 }
 

@@ -5,7 +5,7 @@ if (instance_exists(follow))
 
 y += (yTo - y) / 10
 y = round(y)
-x = 174
+x = 176
 
 if ScreenShakeTimer > 0
 {
