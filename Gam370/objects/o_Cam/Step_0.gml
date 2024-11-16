@@ -1,6 +1,6 @@
 if (instance_exists(follow))
 {
-	yTo = follow.y - 50
+	yTo = follow.y - 30
 }
 
 y += (yTo - y) / 10
