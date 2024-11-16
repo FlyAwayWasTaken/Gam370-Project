@@ -37,7 +37,7 @@ with o_Wall
 	//check if there is a wall or ramp above me
 	if !(instance_place(x,y - 16,o_Wall) or  instance_place(x,y - 16,o_RampLeft) or  instance_place(x,y - 16,o_RampRight))
 	{
-		draw_line(x - 1,y,x + 16,y)
+		draw_line(x - 2,y,x + 16,y)
 	}
 	//check if there is a wall or ramp below me
 	if !(instance_place(x,y + 16,o_Wall) or  instance_place(x,y + 16,o_RampLeft) or  instance_place(x,y + 16,o_RampRight))

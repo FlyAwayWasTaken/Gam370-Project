@@ -2,6 +2,10 @@
 if instance_place(x,y,o_Mouse) and mouse_check_button_pressed(mb_left) and VMomentum = 0 and HMomentum = 0
 {
 	PullingBack = true
+	if !audio_is_playing(mus_PullBack)
+	{
+		audio_play_sound(mus_PullBack,1,false)	
+	}
 }
 
 if !mouse_check_button(mb_left)
@@ -9,6 +13,7 @@ if !mouse_check_button(mb_left)
 	if PullingBack = true
 	{
 		//Launch player	
+		audio_play_sound(mus_Jump,1,false)
 		//Vertical Momentum
 		VMomentum += (o_Mouse.y - y) / 10
 		if VMomentum > 10
@@ -47,6 +52,7 @@ if VMoveDirection > 0
 		if instance_position(x,y - (PlayerHeight / 2) ,o_Wall)
 		{
 			//we've hit a wall! kill momentum and end this loop
+			audio_play_sound(mus_WallSlam,1,false)
 			o_Cam.ScreenShakeTimer = 10
 			VMomentum = 0
 			i = VMomentumAbs
@@ -88,6 +94,7 @@ if HMoveDirection < 0
 		if instance_position(x - (PlayerWidth / 2) - 1,y,o_Wall)
 		{
 			//we've hit a wall! bounce back the other way!
+			audio_play_sound(mus_WallSlam,1,false)
 			o_Cam.ScreenShakeTimer = 10
 			HMomentum = HMomentum * 0.3
 			HMomentum = HMomentum * -1
@@ -109,6 +116,7 @@ if HMoveDirection > 0
 		if instance_position(x + (PlayerWidth / 2),y ,o_Wall)
 		{
 			//we've hit a wall! bounce back the other way!
+			audio_play_sound(mus_WallSlam,1,false)
 			o_Cam.ScreenShakeTimer = 10
 			HMomentum = HMomentum * 0.3
 			HMomentum = HMomentum * -1
