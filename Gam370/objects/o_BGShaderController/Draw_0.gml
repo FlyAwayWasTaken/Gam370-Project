@@ -1,7 +1,22 @@
 x = 176
 y = o_Cam.y
 
-draw_sprite(s_BG1,0,x,y)
+if o_Player.y > 6000
+{
+	draw_sprite(s_BG1,0,x,y)
+}
+if o_Player.y > 4000 and o_Player.y < 6001
+{
+	draw_sprite(s_BG2,0,x,y)	
+}
+if o_Player.y > 2000 and o_Player.y < 4001
+{
+	draw_sprite(s_BG3,0,x,y)	
+}
+if o_Player.y < 2001
+{
+	draw_sprite(s_BG2,0,x,y)	
+}
 
 //create surface to we can take circles out of the black to show the background behind
 surf = surface_create(352,8000)
