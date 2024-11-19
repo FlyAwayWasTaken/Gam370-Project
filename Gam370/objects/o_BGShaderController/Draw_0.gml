@@ -4,7 +4,7 @@ y = o_Cam.y
 draw_sprite(s_BG1,0,x,y)
 
 //create surface to we can take circles out of the black to show the background behind
-surf = surface_create(352,4000)
+surf = surface_create(352,8000)
 //set draw target to newly created surface
 surface_set_target(surf)
 //fill this surface with the color black
