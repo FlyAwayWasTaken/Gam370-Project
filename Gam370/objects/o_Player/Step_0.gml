@@ -1,6 +1,11 @@
 //check for touching the mouse and if left click is pressed and if we are standing still
 if instance_place(x,y,o_Mouse) and mouse_check_button_pressed(mb_left) and VMomentum = 0 and HMomentum = 0
 {
+	with instance_create_layer(x,y,"Particles",o_ExpandParticle)
+	{
+		sprite_index = other.sprite_index	
+		image_index = other.image_index
+	}
 	PullingBack = true
 	if !audio_is_playing(mus_PullBack)
 	{
@@ -49,13 +54,18 @@ if VMoveDirection > 0
 {
 	for (var i = 0; i < VMomentumAbs; i++) 
 	{
-		if instance_position(x,y - (PlayerHeight / 2) ,o_Wall)
+		if place_meeting(x,y - 1 ,o_Wall)
 		{
 			//we've hit a wall! kill momentum and end this loop
 			audio_play_sound(mus_WallSlam,1,false)
 			o_Cam.ScreenShakeTimer = 10
 			VMomentum = 0
 			i = VMomentumAbs
+			with instance_create_layer(x,y,"Particles",o_ExpandParticle)
+			{
+				sprite_index = other.sprite_index	
+				image_index = other.image_index
+			}
 		}
 		else
 		{
@@ -70,7 +80,7 @@ if VMoveDirection < 0
 {
 	for (var i = 0; i < VMomentumAbs; i++) 
 	{
-		if instance_position(x,y + (PlayerHeight / 2),o_Wall)
+		if place_meeting(x,y + 1,o_Wall)
 		{
 			//we've hit a wall! kill momentum and end this loop
 			VMomentum = 0
@@ -91,9 +101,14 @@ if HMoveDirection < 0
 {
 	for (var i = 0; i < HMomentumAbs; i++) 
 	{
-		if instance_position(x - (PlayerWidth / 2) - 1,y,o_Wall)
+		if place_meeting(x - 1,y,o_Wall)
 		{
 			//we've hit a wall! bounce back the other way!
+			with instance_create_layer(x,y,"Particles",o_ExpandParticle)
+			{
+				sprite_index = other.sprite_index	
+				image_index = other.image_index
+			}
 			audio_play_sound(mus_WallSlam,1,false)
 			o_Cam.ScreenShakeTimer = 10
 			HMomentum = HMomentum * 0.3
@@ -113,9 +128,14 @@ if HMoveDirection > 0
 {
 	for (var i = 0; i < HMomentumAbs; i++) 
 	{
-		if instance_position(x + (PlayerWidth / 2),y ,o_Wall)
+		if place_meeting(x + 1,y ,o_Wall)
 		{
 			//we've hit a wall! bounce back the other way!
+			with instance_create_layer(x,y,"Particles",o_ExpandParticle)
+			{
+				sprite_index = other.sprite_index	
+				image_index = other.image_index
+			}
 			audio_play_sound(mus_WallSlam,1,false)
 			o_Cam.ScreenShakeTimer = 10
 			HMomentum = HMomentum * 0.3
@@ -134,4 +154,13 @@ if HMoveDirection > 0
 if instance_place(x, y + 1,o_Wall)
 {
 	HMomentum = 0
+}
+
+if VMomentum != 0 or HMomentum != 0
+{
+	with instance_create_layer(x,y,"Particles",o_FadeParticle)
+	{
+		sprite_index = other.sprite_index	
+		image_index = other.image_index
+	}
 }

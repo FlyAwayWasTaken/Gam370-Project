@@ -1,0 +1,1 @@
+//dont draw yourself - sprite is only assigned to make placing the object down easier

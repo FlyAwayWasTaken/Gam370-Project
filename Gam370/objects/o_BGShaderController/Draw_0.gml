@@ -49,33 +49,42 @@ surface_free(surf)
 //draw lines on top of surface
 with o_Wall
 {
-	//check if there is a wall or ramp above me
-	if !(instance_place(x,y - 16,o_Wall) or  instance_place(x,y - 16,o_RampLeft) or  instance_place(x,y - 16,o_RampRight))
+	if distance_to_object(o_Player) < 400
 	{
-		draw_line(x - 2,y,x + 16,y)
-	}
-	//check if there is a wall or ramp below me
-	if !(instance_place(x,y + 16,o_Wall) or  instance_place(x,y + 16,o_RampLeft) or  instance_place(x,y + 16,o_RampRight))
-	{
-		draw_line(x - 1,y + 16,x + 15,y + 16)
-	}
-	//check if there is a wall or ramp to the left of me
-	if !(instance_place(x - 16,y,o_Wall) or  instance_place(x - 16,y,o_RampLeft) or  instance_place(x - 16,y,o_RampRight))
-	{
-		draw_line(x - 1,y,x - 1,y + 16)
-	}
-	//check if there is a wall or ramp to the right of me
-	if !(instance_place(x + 16,y,o_Wall) or  instance_place(x + 16,y,o_RampLeft) or  instance_place(x + 16,y,o_RampRight))
-	{
-		draw_line(x + 16,y,x + 16,y + 16)
+		//check if there is a wall or ramp above me
+		if !(instance_place(x,y - 16,o_Wall) or  instance_place(x,y - 16,o_RampLeft) or  instance_place(x,y - 16,o_RampRight))
+		{
+			draw_line(x - 2,y,x + 16,y)
+		}
+		//check if there is a wall or ramp below me
+		if !(instance_place(x,y + 16,o_Wall) or  instance_place(x,y + 16,o_RampLeft) or  instance_place(x,y + 16,o_RampRight))
+		{
+			draw_line(x - 1,y + 16,x + 15,y + 16)
+		}
+		//check if there is a wall or ramp to the left of me
+		if !(instance_place(x - 16,y,o_Wall) or  instance_place(x - 16,y,o_RampLeft) or  instance_place(x - 16,y,o_RampRight))
+		{
+			draw_line(x - 1,y,x - 1,y + 16)
+		}
+		//check if there is a wall or ramp to the right of me
+		if !(instance_place(x + 16,y,o_Wall) or  instance_place(x + 16,y,o_RampLeft) or  instance_place(x + 16,y,o_RampRight))
+		{
+			draw_line(x + 16,y,x + 16,y + 16)
+		}
 	}
 	
 }
 with o_RampLeft
 {
-	draw_line(x,y,x + 16,y + 16)
+	if distance_to_object(o_Player) < 400
+	{
+		draw_line(x,y,x + 16,y + 16)
+	}
 }
 with o_RampRight
 {
-	draw_line(x - 1,y + 16,x + 15,y)
+	if distance_to_object(o_Player) < 400
+	{
+		draw_line(x - 1,y + 16,x + 15,y)
+	}
 }
