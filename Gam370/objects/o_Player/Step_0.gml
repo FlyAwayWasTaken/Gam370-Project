@@ -90,6 +90,8 @@ if VMoveDirection < 0
 		{
 			//commit movement
 			y += 1
+			//increment distance fallen counter
+			DistanceFallen += 1
 		}		
 	}
 }
@@ -163,4 +165,10 @@ if VMomentum != 0 or HMomentum != 0
 		sprite_index = other.sprite_index	
 		image_index = other.image_index
 	}
+}
+
+//update highest point reached
+if y < HighestPointReached 
+{
+	HighestPointReached = y	
 }
