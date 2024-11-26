@@ -151,4 +151,4 @@ if PullingBack = true
 	}
 }
 
-draw_self()
+draw_sprite(s_PlaceholderPlayerOutline,0,x,y)

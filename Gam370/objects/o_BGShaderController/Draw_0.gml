@@ -39,6 +39,10 @@ with o_RampRight
 {
 	draw_self()
 }
+with o_Player
+{
+	draw_self()	
+}
 
 //draw surface then delete it
 gpu_set_blendmode(bm_normal)
